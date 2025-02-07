@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Author;
+use App\Models\Category;
+use App\Models\Publisher;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,6 +16,19 @@ return new class extends Migration
     {
         Schema::create('books', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('image');
+            $table->text('description');
+            $table->string('slug');
+            $table->unsignedSmallInteger('quantity');
+            $table->float('rate');
+            $table->year('publish_year');
+            $table->float('price');
+            $table->boolean('is_available')->default(1);
+            $table->foreignIdFor(Category::class)->constrained()->nullOnDelete();
+            $table->foreignIdFor(Publisher::class)->constrained()->nullOnDelete();
+            $table->foreignIdFor(Author::class)->constrained()->nullOnDelete();
+            $table->nullableMorphs('discountable');
             $table->timestamps();
         });
     }

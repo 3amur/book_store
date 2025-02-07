@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('shipping_areas', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->float('fee');
             $table->timestamps();
         });
     }
