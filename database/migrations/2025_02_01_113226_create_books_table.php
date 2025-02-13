@@ -25,9 +25,9 @@ return new class extends Migration
             $table->year('publish_year');
             $table->float('price');
             $table->boolean('is_available')->default(1);
-            $table->foreignIdFor(Category::class)->constrained()->nullOnDelete();
-            $table->foreignIdFor(Publisher::class)->constrained()->nullOnDelete();
-            $table->foreignIdFor(Author::class)->constrained()->nullOnDelete();
+            $table->foreignIdFor(Category::class)->nullable()->constrained()->nullOnDelete();
+            $table->foreignIdFor(Publisher::class)->nullable()->constrained()->nullOnDelete();
+            $table->foreignIdFor(Author::class)->nullable()->constrained()->nullOnDelete();
             $table->nullableMorphs('discountable');
             $table->timestamps();
         });

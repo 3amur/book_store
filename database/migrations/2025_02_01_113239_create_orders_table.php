@@ -25,8 +25,8 @@ return new class extends Migration
             $table->float('tax_amount');
             $table->string('transaction_reference');
             $table->string('address');
-            $table->foreignIdFor(ShippingArea::class)->constrained()->nullOnDelete();
-            $table->foreignIdFor(User::class)->constrained()->nullOnDelete();
+            $table->foreignIdFor(ShippingArea::class)->nullable()->constrained()->nullOnDelete();
+            $table->foreignIdFor(User::class)->nullable()->constrained()->nullOnDelete();
             $table->timestamps();
         });
     }
